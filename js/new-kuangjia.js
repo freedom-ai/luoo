@@ -1,6 +1,4 @@
-/**
- * Created by cheng on 2016/9/20.
- */
+// 学习jQuery 封装一些简单的功能
 (function(w){
     var $$ = function() {};
     $$.prototype={
@@ -114,7 +112,7 @@
             return arr.constructor === Array;
         },
 
-    }
+    };
 //在框架中实例化，这样外面就不用实例化了
     $$ = new $$();
     /* 模块化 */
@@ -209,7 +207,7 @@
                 event.cancelBubble = true;
             }
         },
-    })
+    });
 
 //封装一些常用的dom操作
     $$.extend($$,{
@@ -375,7 +373,7 @@
             context = context || document;
             return  context.querySelectorAll(selector);
         },
-    })
+    });
 
     /*css框架*/
     $$.extend($$,{
@@ -492,7 +490,7 @@
             var scrollLeft = document.body.scrollLeft || (document.documentElement && document.documentElement.scrollLeft);
             return scrollLeft
         }
-    })
+    });
 //封装属性框架
     $$.extend($$,{
         //属性操作，获取属性的值，设置属性的值 at tr（'test','target','_blank'）
@@ -561,7 +559,7 @@
         },
         //获取
         getClass:function (id){
-            var doms = $$.$all(id)
+            var doms = $$.$all(id);
             return $$.trim(doms[0].className).split(" ")
         }
     })
@@ -589,7 +587,6 @@
     }
     Animate.prototype={
         _init:function(){},
-        //添加部门
         // add 函数实现运行
         add:function(id,json,duration){
             //add方法做两件事情：适配器，运行动画，只要用户调用add方法，整个动画能够运行起来
@@ -622,7 +619,6 @@
         },
 
 
-        //  运行部门
         _run:function(){
             // 此处使用定时器循环loop
             var that=this;
@@ -798,10 +794,10 @@
         _stop:function(_obj){
             this._manyProperty(_obj.id,_obj.styles,1);
         },
-    }
+    };
     // 采用原型方式需要实例化函数
-    $$.animate = new Animate()
+    $$.animate = new Animate();
 
 
     w.$$=$$
-})(window)
+})(window);
